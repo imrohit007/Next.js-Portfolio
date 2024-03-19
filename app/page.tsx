@@ -3,10 +3,9 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 export default function Home() {
-  const aboutRef = useRef(null);
-  const typewriterRef = useRef(null);
-  const imageRef = useRef(null);
-  
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const typewriterRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     const aboutRefCurrent = aboutRef.current;
@@ -15,14 +14,18 @@ export default function Home() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const typewriterSpans =
-              typewriterRef.current.querySelectorAll("span");
-            typewriterSpans.forEach((span, index) => {
-              setTimeout(() => {
-                span.classList.add("animate-typewriter");
-              }, index * 100);
-            });
+              typewriterRef.current?.querySelectorAll<HTMLSpanElement>("span");
+            if (typewriterSpans) {
+              typewriterSpans.forEach(
+                (span: HTMLSpanElement, index: number) => {
+                  setTimeout(() => {
+                    span.classList.add("animate-typewriter");
+                  }, index * 100);
+                }
+              );
+            }
 
-            imageRef.current.classList.add("animate-fade-in");
+            imageRef.current?.classList.add("animate-fade-in");
           }
         });
       },
