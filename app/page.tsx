@@ -9,6 +9,7 @@ export default function Home() {
   
 
   useEffect(() => {
+    const aboutRefCurrent = aboutRef.current;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -28,16 +29,16 @@ export default function Home() {
       { threshold: 0.5 }
     );
 
-    if (aboutRef.current) {
-      observer.observe(aboutRef.current);
+    if (aboutRefCurrent) {
+      observer.observe(aboutRefCurrent);
     }
 
     return () => {
-      if (aboutRef.current) {
-        observer.unobserve(aboutRef.current);
+      if (aboutRefCurrent) {
+        observer.unobserve(aboutRefCurrent);
       }
     };
-  }, []);
+  }, [aboutRef]);
 
   return (
     <div>
@@ -174,25 +175,27 @@ export default function Home() {
             <h2 className="text-4xl font-bold mb-8 text-white">About Me</h2>
             <p className="text-gray-300 typewriter mb-8" ref={typewriterRef}>
               <span className="text-xl">
-                Hey there! I'm Rohit Kumar Thakur, from Madhubani, Bihar, India.{" "}
+                Hey there! I&apos;m Rohit Kumar Thakur, from Madhubani, Bihar,
+                India.{" "}
               </span>
               <span className="text-xl">
-                Even though I didn't finish college, I love coding, making
+                Even though I didn&apos;t finish college, I love coding, making
                 mobile apps, building web apps, and diving into machine learning
                 & AI.{" "}
               </span>
               <span className="text-xl">
-                When I'm free, I like sharing what I know on Medium and making
-                YouTube videos.{" "}
+                When I&apos;m free, I like sharing what I know on Medium and
+                making YouTube videos.{" "}
               </span>
               <span className="text-xl">Thanks for checking me out! </span>
               <br />
               <span className="text-xl">
-                From the get-go, I've always wanted to start my own company.{" "}
+                From the get-go, I&apos;ve always wanted to start my own
+                company.{" "}
               </span>
               <span className="text-xl">
-                I'm big on making knowledge available to everyone, which is why
-                I write and make videos.{" "}
+                I&apos;m big on making knowledge available to everyone, which is
+                why I write and make videos.{" "}
               </span>
               <span className="text-xl">
                 I want to help others avoid the struggles I faced when I started
@@ -200,15 +203,15 @@ export default function Home() {
               </span>
               <br />
               <span className="text-xl">
-                Looking ahead, I'm excited about what's next.{" "}
+                Looking ahead, I&apos;m excited about what&apos;s next.{" "}
               </span>
               <span className="text-xl">
-                Right now, I'm hustling to make ends meet and laying the
+                Right now, I&apos;m hustling to make ends meet and laying the
                 groundwork for my startup.{" "}
               </span>
               <span className="text-xl">
-                I'll keep sharing what I know on Medium, YouTube and Social
-                Media, and if you want to support me, that'd be awesome.
+                I&apos;ll keep sharing what I know on Medium, YouTube and Social
+                Media, and if you want to support me, that&apos;d be awesome.
               </span>
             </p>
           </div>
@@ -568,7 +571,7 @@ export default function Home() {
       <section className="relative py-32">
         <div className="absolute inset-0 h-full">
           <Image
-            src="/bob.jpg" // Replace with your desired background image
+            src="/bob.jpg" 
             alt="Ninza7"
             layout="fill"
             objectFit="cover"
@@ -580,15 +583,14 @@ export default function Home() {
         <div className="container mx-auto px-4 relative z-10 h-full flex items-center">
           <div className="max-w-3xl mx-auto text-center text-white">
             <blockquote className="text-3xl font-semibold mb-4">
-              "Beginning Are Usually Scary, And Endings Are Usually Sad, But
-              It's Everything In Between That Makes It All Worth Living"
+              &quot;Beginning Are Usually Scary, And Endings Are Usually Sad,
+              But It&apos;s Everything In Between That Makes It All Worth
+              Living&quot;
             </blockquote>
             <cite className="text-xl font-medium">- Bob Marley</cite>
           </div>
         </div>
       </section>
-
-      
     </div>
   );
 }
